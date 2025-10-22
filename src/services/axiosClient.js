@@ -52,16 +52,16 @@ axiosClient.interceptors.response.use(
     if (error.response) {
       // الخادم رد بحالة خطأ
       console.error("AXIOS ERROR full:", {
-        message: e.message,
-        config: e.config,
-        response: e.response
+        message: error.message,
+        config: error.config,
+        response: error.response
           ? {
-              status: e.response.status,
-              headers: e.response.headers,
-              data: e.response.data,
+              status: error.response.status,
+              headers: error.response.headers,
+              data: error.response.data,
             }
           : null,
-        request: e.request ? "REQUEST_SENT" : null,
+        request: error.request ? "REQUEST_SENT" : null,
       });
 
       if (error.response.status === 401) {
