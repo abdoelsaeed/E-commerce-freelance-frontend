@@ -3,8 +3,14 @@ import axios from "axios";
 import { redirect } from "react-router-dom";
 // إنشاء instance من Axios
 const RAW_BASE = import.meta.env.VITE_BASE_URL;
-// Always use relative /api path - will be handled by proxy in both dev (Vite) and prod (Vercel)
-const BASE = "/api/v1/";
+// Prefer the dev proxy during local development so CORS doesn't block requests.
+// If running in dev, use the relative path; otherwise, use the provided VITE_BASE_URL if any.
+const isDev = import.meta.env.DEV;
+const BASE = isDev
+  ? "/api/v1/"
+  : RAW_BASE
+  ? RAW_BASE.replace(/\/+$/, "") + "/api/v1/"
+  : "/api/v1/";
 console.log("axiosClient resolved BASE:", BASE, "(DEV=", isDev, ")");
 const axiosClient = axios.create({
   baseURL: BASE, // العنوان الأساسي لكل الطلبات
