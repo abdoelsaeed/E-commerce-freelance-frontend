@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import CardCart from "../features/cart/CardCart";
-import OrderSummary from "../features/cart/orderSummary";
+import OrderSummary from "../features/cart/OrderSummary";
 import { getMyCart } from "../services/cartApi";
 import EmptyCart from "../features/cart/EmptyCart";
 
