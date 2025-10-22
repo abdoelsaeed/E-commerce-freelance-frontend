@@ -43,12 +43,41 @@ axiosClient.interceptors.request.use(
 
 // Interceptor للردود
 axiosClient.interceptors.response.use(
-  (response) => response.data, // نرجّع الـ data بس
+  (response) => {
+    // نطبع الـ response للتشخيص
+    console.log('API Response:', response.status, response.data);
+    return response.data;
+  },
   (error) => {
-    if (error.response && error.response.status === 401)  {
-      console.error("Unauthorized! Redirecting to login...");
-      redirect('/login');
+    // تفاصيل أكثر عن الخطأ
+    if (error.response) {
+      // الخادم رد بحالة خطأ
+      console.error('API Error Response:', {
+        status: error.response.status,
+        data: error.response.data,
+        headers: error.response.headers
+      });
+      
+      if (error.response.status === 401) {
+        console.error("Unauthorized! Redirecting to login...");
+        redirect('/login');
+      }
+    } else if (error.request) {
+      // لم يصل الطلب للخادم
+      console.error('API Request Error:', error.request);
+    } else {
+      // خطأ في إعداد الطلب
+      console.error('API Config Error:', error.message);
     }
+    
+    // طباعة معلومات CORS للتشخيص
+    if (error.response && error.response.headers) {
+      console.log('CORS Headers:', {
+        'Access-Control-Allow-Origin': error.response.headers['access-control-allow-origin'],
+        'Access-Control-Allow-Credentials': error.response.headers['access-control-allow-credentials']
+      });
+    }
+    
     return Promise.reject(error);
   }
 );
