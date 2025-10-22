@@ -18,13 +18,13 @@ export default function SalesSummary() {
     setLoading(true);
     setError("");
     try {
-      console.log("Fetching sales with:", { period, value });
+      
       const res = await salesSummary({ period, value });
-      console.log("Raw response:", res);
+      
 
       // Handle both direct data and nested data formats
       const salesData = res?.data || res;
-      console.log("Processed sales data:", salesData);
+      
 
       setResult(salesData);
     } catch (err) {

@@ -31,7 +31,7 @@ function Login() {
     try {
       const res = await login(formData);
       // debug: log response shape
-      console.log("login response:", res);
+      
 
       const token = res?.token ?? res?.data?.token ?? null;
       const userObj = res?.user ?? res?.data?.user ?? res?.data ?? null;

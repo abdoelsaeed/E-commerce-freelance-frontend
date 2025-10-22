@@ -29,7 +29,7 @@ export async function totalSales(year, month) {
 export async function getOrdersStatusCount(){
   try {
     const data = await axiosClient.get("orders/stats/overview");
-    console.log(12);
+    
     return data;
   }
   catch (error) {

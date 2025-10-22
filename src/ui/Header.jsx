@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 function Header() {
   const isAuthenticated = !!localStorage.getItem("jwt");
   const user = useSelector((state) => state.auth.user);
-  console.log(user);
+  
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   function handleLogout() {

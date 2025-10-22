@@ -30,7 +30,7 @@ export async function login(credentials) {
   try {
     const res = await axiosClient.post(`users/login`, credentials);
     // Debug: log raw response shape
-    console.log("userApi.login raw response:", res);
+    
     // شكل الـ response:
     // { token, status, data: { user } }
     if (res?.status === "success" && res.token && res.data?.user) {
@@ -71,7 +71,7 @@ export async function createUser(data) {
     const res = await axiosClient.post("users/create-user", data);
 
     // اطبع كل شيء للتأكد
-    console.log("Raw response from server:", res);
+    
 
     // مباشرة أعد الـ user object
     return res.data.data;

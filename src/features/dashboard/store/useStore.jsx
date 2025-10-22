@@ -10,7 +10,7 @@ export const useStore = create((set, get) => ({
   users: [],
   loadOrders: async () => {
     const orders = await getOrdersStatusCount();
-    console.log(orders);
+    
     set({ orders });
   },
   // جلب الطلبات مع بيانات الصفحات

@@ -11,7 +11,6 @@ const BASE = isDev
   : RAW_BASE
     ? RAW_BASE.replace(/\/+$/, "") + "/api/v1/"
     : "/api/v1/";
-console.log("axiosClient resolved BASE:", BASE, "(DEV=", isDev, ")");
 const axiosClient = axios.create({
   baseURL: BASE, // العنوان الأساسي لكل الطلبات
   headers: {
@@ -31,7 +30,6 @@ axiosClient.interceptors.request.use(
     // Log the outgoing request (method + full url) for debugging network issues
     try {
       const fullUrl = (config.baseURL || "") + (config.url || "");
-      console.log("axios request:", config.method, fullUrl, config);
     } catch (e) {
       /* ignore logging errors */
     }
@@ -44,7 +42,6 @@ axiosClient.interceptors.request.use(
 axiosClient.interceptors.response.use(
   (response) => {
     // نطبع الـ response للتشخيص
-    console.log("API Response:", response.status, response.data);
     return response.data;
   },
   (error) => {
@@ -76,15 +73,6 @@ axiosClient.interceptors.response.use(
       console.error("API Config Error:", error.message);
     }
 
-    // طباعة معلومات CORS للتشخيص
-    if (error.response && error.response.headers) {
-      console.log("CORS Headers:", {
-        "Access-Control-Allow-Origin":
-          error.response.headers["access-control-allow-origin"],
-        "Access-Control-Allow-Credentials":
-          error.response.headers["access-control-allow-credentials"],
-      });
-    }
 
     return Promise.reject(error);
   }
