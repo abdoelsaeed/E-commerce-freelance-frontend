@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "./authSlice";
 import { login } from "../../services/userApi";
 
 function Login() {
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -27,9 +30,31 @@ function Login() {
 
     try {
       const res = await login(formData);
-// للتحقق من البيانات
+      // debug: log response shape
+      console.log("login response:", res);
 
-      if (res?.token) {
+      const token = res?.token ?? res?.data?.token ?? null;
+      const userObj = res?.user ?? res?.data?.user ?? res?.data ?? null;
+
+      if (token) {
+        // store token and set redux user
+        try {
+          localStorage.setItem("jwt", token);
+        } catch (e) {
+          console.warn("Could not persist jwt", e);
+        }
+        try {
+          if (userObj) {
+            dispatch(setUser(userObj));
+          } else {
+            console.warn(
+              "Login succeeded but no user object returned to set in Redux",
+              res
+            );
+          }
+        } catch (e) {
+          console.warn("Failed to dispatch setUser", e);
+        }
         const from = location.state?.from?.pathname || "/";
         navigate(from);
       } else {

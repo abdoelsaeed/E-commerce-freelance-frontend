@@ -1,13 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
 import List from "./List";
 import ListIclons from "./ListIclons";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 function Header() {
   const isAuthenticated = !!localStorage.getItem("jwt");
+  const user = useSelector((state) => state.auth.user);
+  console.log(user);
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-
   function handleLogout() {
     localStorage.removeItem("jwt");
     window.location.href = "/";
@@ -46,6 +49,15 @@ function Header() {
             className="bg-white border border-[#1672d4] text-[#1672d4] font-semibold px-4 py-2 rounded-xl shadow hover:bg-[#1672d4] hover:text-white transition-colors duration-200"
           >
             Logout
+          </button>
+        )}
+        {/* Admin dashboard quick link */}
+        {user?.role === "admin" && (
+          <button
+            onClick={() => navigate("/dashboard")}
+            className="ml-2 bg-[#fffbeb] border border-yellow-300 text-yellow-700 font-semibold px-3 py-2 rounded-xl shadow hover:bg-yellow-200 transition-colors duration-200"
+          >
+            Dashboard
           </button>
         )}
         {!isAuthenticated && (

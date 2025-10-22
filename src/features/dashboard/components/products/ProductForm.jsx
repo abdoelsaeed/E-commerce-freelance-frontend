@@ -212,7 +212,8 @@ export default function ProductForm() {
 
         <input
           placeholder="Category ID"
-          value={form.category_id}
+          value={"68ebaf97bf2d123e12de1049"}
+          disabled={true}
           onChange={(e) =>
             setForm((s) => ({ ...s, category_id: e.target.value }))
           }

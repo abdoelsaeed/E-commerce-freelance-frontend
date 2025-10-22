@@ -29,6 +29,8 @@ export async function signUp(userdata) {
 export async function login(credentials) {
   try {
     const res = await axiosClient.post(`users/login`, credentials);
+    // Debug: log raw response shape
+    console.log("userApi.login raw response:", res);
     // شكل الـ response:
     // { token, status, data: { user } }
     if (res?.status === "success" && res.token && res.data?.user) {

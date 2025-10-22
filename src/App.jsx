@@ -1,9 +1,12 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ErrorMessage from "./ui/ErrorMessage";
 import Spinner from "./ui/Spinner";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "./features/user/authSlice";
+import { getMe } from "./services/userApi";
 // route loaders (must be imported synchronously for react-router)
 import { loader as menLoader } from "./pages/Men";
 import { loader as wishlistloader } from "./pages/Wishlist";
@@ -118,6 +121,29 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
+  const dispatch = useDispatch();
+  const currentUser = useSelector((s) => s.auth.user);
+
+  useEffect(() => {
+    async function bootstrap() {
+      try {
+        const token = (() => {
+          try {
+            return localStorage.getItem("jwt");
+          } catch (e) {
+            return null;
+          }
+        })();
+        if (!token) return;
+        if (currentUser) return;
+        const user = await getMe();
+        if (user) dispatch(setUser(user));
+      } catch (e) {
+        console.warn("Auth bootstrap failed:", e);
+      }
+    }
+    bootstrap();
+  }, [dispatch, currentUser]);
   return (
     <Suspense fallback={<Spinner />}>
       <RouterProvider router={router} />
