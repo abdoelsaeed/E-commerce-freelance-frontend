@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getOrders, updateOrderStatus } from "../../../../services/orderApi";
-import HeaderOrdersTable from "./headerOrdersTable";
+import HeaderOrdersTable from "./HeaderOrdersTable";
 
 export default function OrdersTable() {
   const [orders, setOrders] = useState([]);
