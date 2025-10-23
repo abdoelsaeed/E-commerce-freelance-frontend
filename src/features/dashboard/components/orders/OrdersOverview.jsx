@@ -1,5 +1,5 @@
 // src/components/orders/OrdersOverview.jsx
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useStore } from "../../store/useStore";
 
 export default function OrdersOverview() {
@@ -31,7 +31,7 @@ export default function OrdersOverview() {
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
       {/* Total Orders */}
       <div className="bg-white border-t-4 border-indigo-500 p-5 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
         <div className="text-gray-500 text-sm ">Total Orders</div>

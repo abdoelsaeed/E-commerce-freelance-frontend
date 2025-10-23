@@ -9,14 +9,28 @@ function Men() {
   const { products, loading } = useMenProduct(initialProducts, "men");
 
   return (
-    <div>
-      <SelectorsButtons />
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-7">
+      <div className="mb-8 text-center">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-['Kalnia']">
+          Men's Collection
+        </h1>
+        <p className="text-gray-600 text-sm md:text-base">
+          Discover our curated collection of men's fashion essentials
+        </p>
+      </div>
+
+      <div className="mb-8">
+        <SelectorsButtons />
+      </div>
+
       {loading ? (
-        <div className="flex justify-center items-center h-64">
+        <div className="flex justify-center items-center min-h-[400px]">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1672D4]"></div>
         </div>
       ) : (
-        <Products products={products} />
+        <div className="min-h-[400px]">
+          <Products products={products} />
+        </div>
       )}
     </div>
   );

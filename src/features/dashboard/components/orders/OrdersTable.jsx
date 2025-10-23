@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { getOrders, updateOrderStatus } from "../../../../services/orderApi";
 import HeaderOrdersTable from "./HeaderOrdersTable";
 

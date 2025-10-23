@@ -1,5 +1,4 @@
 // src/pages/DashboardHome.jsx
-import React from "react";
 import DashboardLayout from "../features/dashboard/components/layout/DashboardLayout";
 import ProductForm from "../features/dashboard/components/products/ProductForm";
 import SalesSummary from "../features/dashboard/components/sales/SalesSummary";

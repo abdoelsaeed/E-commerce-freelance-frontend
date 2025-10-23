@@ -1,11 +1,11 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import PageNumbers from "../features/products/components/PageNumbers";
 
-function PaginationButtons({ 
-  currentPage, 
-  setCurrentPage, 
-  totalPages, 
-  basePath = "" 
+function PaginationButtons({
+  currentPage,
+  setCurrentPage,
+  totalPages,
+  basePath = "",
 }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,16 +32,16 @@ function PaginationButtons({
   }
 
   return (
-    <div className="flex items-center justify-center mt-12 mb-8">
-      <div className="flex items-center space-x-4 bg-white rounded-lg shadow-lg p-4 border border-gray-200">
+    <div className="flex items-center justify-center">
+      <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 bg-white rounded-xl shadow-lg p-3 sm:p-4 border border-gray-100">
         {/* Previous Button */}
         <button
           onClick={handlePrevious}
           disabled={currentPage === 1}
-          className={`flex items-center px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+          className={`flex items-center px-3 sm:px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
             currentPage === 1
-              ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-              : "bg-[#1672D4] text-white hover:bg-[#0d5bb8] hover:scale-105 shadow-md"
+              ? "bg-gray-50 text-gray-400 cursor-not-allowed border border-gray-200"
+              : "bg-[#1672D4] text-white hover:bg-[#0d5bb8] hover:scale-105 hover:shadow-md active:scale-95"
           }`}
         >
           <svg

@@ -21,19 +21,28 @@ function Card({ product, noLove }) {
     : [];
   const { isAuthenticated } = useSelector((state) => state.auth);
   return (
-    <div className="bg-amber-50 rounded-xl shadow-2xl  hover:shadow-[#0d5bb8]  transition-all duration-300 w-full max-w-sm overflow-hidden h-[600px] flex flex-col">
-      <div className="bg-[#415A77] mb-5 w-full h-[400px] overflow-hidden flex items-center justify-center">
+    <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 w-full overflow-hidden flex flex-col group">
+      <div className="relative bg-gray-100 w-full aspect-[3/4] overflow-hidden">
         <img
           src={imageCover.url}
-          alt="product"
-          className="w-full h-full object-cover object-center"
+          alt={name}
+          className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
         />
+        {!inStock && (
+          <div className="absolute top-0 left-0 w-full h-full bg-black/50 flex items-center justify-center">
+            <span className="bg-red-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+              Out of Stock
+            </span>
+          </div>
+        )}
       </div>
 
-      <div className="p-6 flex flex-col flex-grow">
+      <div className="p-4 sm:p-5 flex flex-col flex-grow">
         <div className="flex-grow">
-          <h3 className="font-semibold font-Inter text-[20px]">{name}</h3>
-          <div className="flex gap-2 mt-3 mb-3">
+          <h3 className="font-semibold text-gray-900 text-lg sm:text-xl mb-2 line-clamp-2">
+            {name}
+          </h3>
+          <div className="flex flex-wrap gap-2 my-3">
             {availableSizes.map((size) => (
               <CircleSize
                 key={size}

@@ -21,45 +21,59 @@ function ProtectedRoute({ children, requiredRole }) {
           return;
         }
 
-        // if redux already has user, nothing to do
-        if (user) {
+        // if redux already has user and token exists, nothing to do
+        if (user && token) {
           setChecking(false);
           return;
         }
 
         // fetch current user profile
-        const res = await axiosClient.get("/users/me"); // تأكد من endpoint
+        const res = await axiosClient.get("/users/me");
         if (res?.data?.user) {
-          dispatch(setUser(res.data.user)); // action to set user in slice
+          dispatch(setUser(res.data.user));
+        } else {
+          // If no user data received, clear token
+          localStorage.removeItem("jwt");
         }
       } catch (err) {
         console.warn("Failed to fetch profile", err);
-        // optionally clear token if invalid
-        // localStorage.removeItem('jwt')
+        // Clear invalid token
+        localStorage.removeItem("jwt");
       } finally {
         setChecking(false);
       }
     }
     bootstrap();
-  }, [dispatch]);
+  }, [dispatch, user]);
 
-  if (checking) return <Spinner />;
-
-  const token = localStorage.getItem("jwt");
-  if (isAuthenticated || token) {
-    if (requiredRole && user?.role !== requiredRole) {
-      return (
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="bg-red-100 text-red-700 p-6 rounded-xl shadow">
-            You are not authorized to view this page.
-          </div>
-        </div>
-      );
-    }
-    return children;
+  if (checking) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Spinner />
+      </div>
+    );
   }
 
-  return <Navigate to="/login" state={{ from: location }} replace />;
+  const token = localStorage.getItem("jwt");
+
+  // If no token or not authenticated, redirect to login immediately
+  if (!token || !isAuthenticated) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  // Check role requirement if specified
+  if (requiredRole && user?.role !== requiredRole) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="bg-red-100 text-red-700 p-6 rounded-xl shadow">
+          You are not authorized to view this page.
+        </div>
+      </div>
+    );
+  }
+
+  // If all checks pass, render the protected content
+  return children;
 }
 
 export default ProtectedRoute;

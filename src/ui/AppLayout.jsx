@@ -6,17 +6,18 @@ import Spinner from "./Spinner";
 function AppLayout() {
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
-  if(isLoading) return <Spinner/>
-    return (
-      <div className="w-[90%] mx-auto">
-        
-        <Header />
-        <main>
-          <Outlet />
-        </main>
-        <Footer/>
-      </div>
-    );
+  if (isLoading) return <Spinner />;
+  return (
+    <div className="min-h-screen">
+      <Header />
+
+      <main className="w-[90%] mx-auto pt-16">
+        <Outlet />
+      </main>
+
+      <Footer />
+    </div>
+  );
 }
 
-export default AppLayout
+export default AppLayout;
