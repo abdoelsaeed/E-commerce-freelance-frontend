@@ -467,11 +467,23 @@ export default function MyOrdersNice() {
 
 /* ---------------- Loader (keep as-is) ---------------- */
 export async function loader() {
-  try {
+    const jwt = (() => {
+      try {
+        return localStorage.getItem("jwt");
+      } catch (e) {
+        return null;
+      }
+    })();
+    if (!jwt) {
+      // Not authenticated, redirect to login
+      throw new Response(null, {
+        status: 302,
+        headers: {
+          Location: "/login",
+        },
+      });
+    }
     const orders = await getMyOrders();
     return orders;
-  } catch (error) {
-    console.error("Error loading my orders:", error);
-    throw error;
-  }
+  
 }
