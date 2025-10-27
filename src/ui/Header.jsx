@@ -16,18 +16,25 @@ function Header() {
     window.location.href = "/";
   }
 
+  {
+    /* <Link to="/">NIRVA</Link> */
+  }
   return (
     <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 shadow-sm ">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 sm:h-20">
           {/* Left - Logo */}
           <div className="flex-shrink-0">
-            <p className={styles.logo}>
-              <Link to="/">NIRVA</Link>
-            </p>
+            <Link to="/" className="block">
+              <img
+                src="./logo2.png"
+                alt="Nirva Logo"
+                className="ls:m-0 mt-11 w-[200px] h-[160px] object-contain hover:opacity-95 transition-all duration-300 transform hover:scale-105"
+              />
+            </Link>
           </div>
 
-          {/* Center - Main Navigation (always visible on lg+) */}
+          {/* Center - Main Navigation */}
           <div className="hidden lg:block flex-grow px-4">
             <List />
           </div>
