@@ -19,9 +19,9 @@ function Profile() {
         <div className="text-center mb-8">
           <div className="rounded-full w-fit bg-gray-100 p-3 mx-auto">
             <img
-              src={data.photo }
+              src={data.photo}
               alt="profile"
-              className="w-40 h-35 mb-5 mx-auto"
+              className="w-40 h-40  mx-auto rounded-full object-cover"
             />
           </div>
           <h2 className="text-2xl font-semibold text-gray-800 mt-4">
@@ -120,6 +120,22 @@ function Profile() {
 }
 
 export async function loader(){
+    const jwt = (() => {
+      try {
+        return localStorage.getItem("jwt");
+      } catch (e) {
+        return null;
+      }
+    })();
+    if (!jwt) {
+      // Not authenticated, redirect to login
+      throw new Response(null, {
+        status: 302,
+        headers: {
+          Location: "/login",
+        },
+      });
+    }
     const data = await getMe();
     return data;
 }
