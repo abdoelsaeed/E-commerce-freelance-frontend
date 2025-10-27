@@ -29,7 +29,7 @@ function Header() {
               <img
                 src="./logo2.png"
                 alt="Nirva Logo"
-                className="ls:m-0 mt-11 w-[200px] h-[160px] object-contain hover:opacity-95 transition-all duration-300 transform hover:scale-105"
+                className="max-h-[140px] mt-10 w-[200px] py-2 mg:p-0 md:max-h-[160px] md:max-w-[170px] lg:p-0 lg:max-h-[160px] lg:max-w-[170px] object-contain hover:opacity-95 transition-all duration-300 transform hover:scale-105"
               />
             </Link>
           </div>
