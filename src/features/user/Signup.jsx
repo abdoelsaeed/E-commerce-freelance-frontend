@@ -53,19 +53,21 @@ function Signup() {
       </div>
 
       {/* Right side - Form */}
-      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center px-4 sm:px-8 lg:px-16 py-8 lg:py-0 bg-[#E0E1DD]">
-        <div className="text-center mb-8 lg:mb-12">
-          <h1 className="font-[Kalnia] font-bold text-[32px] sm:text-[40px] lg:text-[50px] text-[#18324E] mb-2 lg:mb-4">
-            Nirva
-          </h1>
-          <p className="text-[#18324E] font-semibold text-[20px] sm:text-[24px] lg:text-[32px]">
+      <div className="w-full lg:w-1/2 flex flex-col items-center px-4 sm:px-8 lg:px-12 py-3 lg:py-4 bg-[#E0E1DD]">
+        <div className="text-center mb-2">
+          <img
+            src="logo2.png"
+            alt="logo"
+            className="w-[140px] sm:w-[160px] lg:w-[180px] h-auto mx-auto object-contain"
+          />
+          <p className="text-[#18324E] font-semibold text-[18px] sm:text-[22px] lg:text-[28px]">
             Create an account
           </p>
         </div>
 
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-md space-y-4 lg:space-y-6"
+          className="w-full max-w-md space-y-2 lg:space-y-3"
         >
           {error && (
             <div className="bg-red-50 text-red-500 px-4 py-3 rounded-lg text-sm">
@@ -77,7 +79,7 @@ function Signup() {
             <div className="flex-1">
               <label
                 htmlFor="firstName"
-                className="block text-[#18324E] font-medium mb-2 text-sm sm:text-base"
+                className="block text-[#18324E] font-medium mb-1 text-sm"
               >
                 First Name*
               </label>
@@ -86,7 +88,7 @@ function Signup() {
                 id="firstName"
                 required
                 minLength={2}
-                className="w-full rounded-xl p-3 sm:p-4 bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8AB1DB] focus:border-transparent text-sm sm:text-base"
+                className="w-full rounded-xl p-2 sm:p-3 bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8AB1DB] focus:border-transparent text-sm"
                 placeholder="Jane"
               />
             </div>
@@ -94,7 +96,7 @@ function Signup() {
             <div className="flex-1">
               <label
                 htmlFor="lastName"
-                className="block text-[#18324E] font-medium mb-2 text-sm sm:text-base"
+                className="block text-[#18324E] font-medium mb-1 text-sm"
               >
                 Last Name
               </label>
@@ -103,7 +105,7 @@ function Signup() {
                 id="lastName"
                 required
                 minLength={2}
-                className="w-full rounded-xl p-3 sm:p-4 bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8AB1DB] focus:border-transparent text-sm sm:text-base"
+                className="w-full rounded-xl p-2 sm:p-3 bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8AB1DB] focus:border-transparent text-sm"
                 placeholder="Week"
               />
             </div>
@@ -113,14 +115,14 @@ function Signup() {
           <div>
             <label
               htmlFor="email"
-              className="block text-[#18324E] font-medium mb-2 text-sm sm:text-base"
+              className="block text-[#18324E] font-medium mb-1 text-sm"
             >
               Email
             </label>
             <input
               type="email"
               id="email"
-              className="w-full rounded-xl p-3 sm:p-4 bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8AB1DB] focus:border-transparent text-sm sm:text-base"
+              className="w-full rounded-xl p-2 sm:p-3 bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8AB1DB] focus:border-transparent text-sm"
               placeholder="jane@example.com"
             />
           </div>
@@ -129,14 +131,14 @@ function Signup() {
           <div>
             <label
               htmlFor="address"
-              className="block text-[#18324E] font-medium mb-2 text-sm sm:text-base"
+              className="block text-[#18324E] font-medium mb-1 text-sm"
             >
               Address
             </label>
             <input
               type="text"
               id="address"
-              className="w-full rounded-xl p-3 sm:p-4 bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8AB1DB] focus:border-transparent text-sm sm:text-base"
+              className="w-full rounded-xl p-2 sm:p-3 bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8AB1DB] focus:border-transparent text-sm"
               placeholder="123 Main St, City, Country"
             />
           </div>
@@ -145,14 +147,14 @@ function Signup() {
           <div>
             <label
               htmlFor="phone"
-              className="block text-[#18324E] font-medium mb-2 text-sm sm:text-base"
+              className="block text-[#18324E] font-medium mb-1 text-sm"
             >
               Phone
             </label>
             <input
               type="tel"
               id="phone"
-              className="w-full rounded-xl p-3 sm:p-4 bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8AB1DB] focus:border-transparent text-sm sm:text-base"
+              className="w-full rounded-xl p-2 sm:p-3 bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8AB1DB] focus:border-transparent text-sm"
               placeholder="+20 1X XXX XXXX"
             />
           </div>
@@ -161,7 +163,7 @@ function Signup() {
           <div>
             <label
               htmlFor="password"
-              className="block text-[#18324E] font-medium mb-2 text-sm sm:text-base"
+              className="block text-[#18324E] font-medium mb-1 text-sm"
             >
               Password
             </label>
@@ -170,7 +172,7 @@ function Signup() {
               id="password"
               required
               minLength={6}
-              className="w-full rounded-xl p-3 sm:p-4 bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8AB1DB] focus:border-transparent text-sm sm:text-base"
+              className="w-full rounded-xl p-2 sm:p-3 bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8AB1DB] focus:border-transparent text-sm"
               placeholder="Enter your password"
             />
           </div>
@@ -179,7 +181,7 @@ function Signup() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#1672D4] hover:bg-[#8AB1DB] text-white font-semibold py-3 sm:py-4 px-6 rounded-xl transition-colors duration-200 text-sm sm:text-base disabled:bg-gray-400 disabled:cursor-not-allowed"
+            className="w-full bg-[#1672D4] hover:bg-[#8AB1DB] text-white font-semibold py-2 sm:py-3 px-6 rounded-xl transition-colors duration-200 text-sm disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
             {loading ? "Signing up..." : "Sign Up"}
           </button>

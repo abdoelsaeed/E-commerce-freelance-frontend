@@ -4,25 +4,32 @@ function Footer() {
     <footer className="bg-[#0D1B2A] text-white py-8 md:py-12 w-full px-4 md:px-6 lg:px-8 mt-10">
       <div className="container mx-auto max-w-7xl">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 mb-5">
           {/* Brand Section */}
-          <div className="col-span-1 sm:col-span-2 lg:col-span-2">
-            <h2
-              className="text-2xl md:text-3xl font-bold mb-3 md:mb-4"
-              style={{ fontFamily: "Kalnia, serif" }}
-            >
-              NIRVA
-            </h2>
-            <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-md">
-              Crafted essentials for your everyday life. From elegant Men's
-              essentials and distinctive Women's pieces, to comfortable Kids'
-              apparel.
-            </p>
+          <div className="col-span-1 sm:col-span-2 md:col-span-2">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="flex items-center justify-center md:justify-start">
+                <img
+                  src="logoWhite-removebg-preview.png"
+                  alt="logo"
+                  className="w-[150px] sm:w-[170px] md:w-[140px] lg:w-[180px] object-contain md:translate-y-3 lg:mb-8"
+                />
+              </div>
+              <div className="flex items-center justify-center md:justify-start flex-1">
+                <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-md text-center md:text-left md:text-sm lg:text-base">
+                  Crafted essentials for your everyday life. From elegant Men's
+                  essentials and distinctive Women's pieces, to comfortable
+                  Kids' apparel.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+          <div className="hidden md:block md:col-span-1">
+            <h3 className="text-base lg:text-lg font-semibold mb-3 lg:mb-4">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
               <li>
                 <a
@@ -60,8 +67,10 @@ function Footer() {
           </div>
 
           {/* Support */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Support</h3>
+          <div className="hidden md:block md:col-span-1">
+            <h3 className="text-base lg:text-lg font-semibold mb-3 lg:mb-4">
+              Support
+            </h3>
             <ul className="space-y-2">
               <li>
                 <a
@@ -101,12 +110,12 @@ function Footer() {
 
         {/* Social Media Section */}
         <div className="border-t border-gray-700 pt-6 md:pt-8 mb-6 md:mb-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div>
-              <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4 text-center md:text-left">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-full">
+              <h3 className="text-base md:text-lg font-semibold mb-4 text-center">
                 Follow Us
               </h3>
-              <div className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6">
+              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8">
                 <a
                   href="https://www.instagram.com/nirva_store_/"
                   target="_blank"

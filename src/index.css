@@ -1,5 +1,25 @@
 @import "tailwindcss";
 
+
+@layer utilities {
+  @media (min-width: 1025px) and (max-width: 1300px) {
+    /* height full viewport */
+    .mid\:h-screen { height: 100vh; }
+
+    /* make image cover the area */
+    .mid\:object-cover { object-fit: cover; }
+
+    /* remove max-width constraint if present */
+    .mid\:max-w-none { max-width: none; }
+
+    /* vertically center flex children if needed */
+    .mid\:items-center { align-items: center; }
+
+    /* if you need to remove padding on that range */
+    .mid\:px-0 { padding-left: 0; padding-right: 0; }
+  }
+}
+
 html,
 body {
   overflow-x: hidden;

@@ -7,8 +7,9 @@ export default {
         Inter: ['"Inter"', "sans-serif"],
       },
       colors: {
-        'custom-blue': '#8AB1DB',
+        "custom-blue": "#8AB1DB",
       },
+
     },
   },
   plugins: [],

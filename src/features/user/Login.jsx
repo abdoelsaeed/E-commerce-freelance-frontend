@@ -31,7 +31,6 @@ function Login() {
     try {
       const res = await login(formData);
       // debug: log response shape
-      
 
       const token = res?.token ?? res?.data?.token ?? null;
       const userObj = res?.user ?? res?.data?.user ?? res?.data ?? null;
@@ -73,20 +72,22 @@ function Login() {
   return (
     <div className="flex flex-col lg:flex-row w-full min-h-screen">
       {/* Left side - Image */}
-      <div className="w-full lg:w-1/2 h-64 sm:h-80 lg:h-screen overflow-hidden">
+      <div className="w-full lg:w-1/2 h-[400px] sm:h-[500px] lg:h-screen relative overflow-hidden">
         <img
           src="./SignUp.jpg"
           alt="login"
-          className="w-full h-full object-cover rounded-b-3xl lg:rounded-l-3xl lg:rounded-r-none"
+          className="w-full h-full object-cover object-center rounded-b-3xl lg:rounded-l-3xl lg:rounded-r-none shadow-lg transition-transform duration-700 hover:scale-105"
         />
       </div>
 
       {/* Right side - Form */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center items-center px-4 sm:px-8 lg:px-16 py-8 lg:py-0 bg-[#E0E1DD]">
         <div className="text-center mb-8 lg:mb-12">
-          <h1 className="font-[Kalnia] font-bold text-[32px] sm:text-[40px] lg:text-[50px] text-[#18324E] mb-2 lg:mb-4">
-            Nirva
-          </h1>
+          <img
+            src="logo2.png"
+            alt="logo"
+            className="w-[150px] sm:w-[180px] lg:w-[200px] h-auto mx-auto object-contain"
+          />
           <p className="text-[#18324E] font-semibold text-[20px] sm:text-[24px] lg:text-[32px]">
             Login to your account
           </p>
