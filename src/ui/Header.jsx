@@ -27,7 +27,7 @@ function Header() {
           <div className="flex-shrink-0">
             <Link to="/" className="block">
               <img
-                src="./logo2.png"
+                src="/logo2.png"
                 alt="Nirva Logo"
                 className="max-h-[140px] mt-10 w-[200px] py-2 mg:p-0 md:max-h-[160px] md:max-w-[170px] lg:p-0 lg:max-h-[160px] lg:max-w-[170px] object-contain hover:opacity-95 transition-all duration-300 transform hover:scale-105"
               />
