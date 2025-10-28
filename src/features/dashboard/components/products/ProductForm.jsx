@@ -99,7 +99,7 @@ export default function ProductForm() {
       return;
     }
 
-    if (!form.name || !form.price || !form.category_id) {
+    if (!form.name || !form.price ) {
       setError("Please provide name, price, and category ID");
       return;
     }
@@ -130,7 +130,7 @@ export default function ProductForm() {
       const fd = new FormData();
       fd.append("name", form.name);
       fd.append("price", String(form.price));
-      fd.append("category_id", form.category_id);
+      fd.append("category_id", "68e00f13194b874c5700ad26");
       fd.append("season", form.season);
       fd.append("brand", form.brand);
       fd.append("gender", form.gender);
