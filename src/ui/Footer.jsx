@@ -10,7 +10,7 @@ function Footer() {
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex items-center justify-center md:justify-start">
                 <img
-                  src="logoWhite-removebg-preview.png"
+                  src="/logoWhite-removebg-preview.png"
                   alt="logo"
                   className="w-[150px] sm:w-[170px] md:w-[140px] lg:w-[180px] object-contain md:translate-y-3 lg:mb-8"
                 />
@@ -41,7 +41,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="/men"
+                  href="/products/men"
                   className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base"
                 >
                   Men
@@ -49,7 +49,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="/women"
+                  href="/products/women"
                   className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base"
                 >
                   Women
@@ -57,7 +57,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="/kids"
+                  href="/products/women"
                   className="text-gray-300 hover:text-white transition-colors text-sm lg:text-base"
                 >
                   Kids
