@@ -15,13 +15,13 @@ function Footer() {
                   className="w-[150px] sm:w-[170px] md:w-[140px] lg:w-[180px] object-contain md:translate-y-3 lg:mb-8"
                 />
               </div>
-              <div className="flex-direction: column; md:justify-start flex-1">
+              <div className="flex flex-col items-center md:items-start md:justify-start flex-1 gap-3">
                 <img
                   src="/Title.png"
                   alt="Title"
-                  className="w-[100px] sm:w-[120px] md:w-[100px] lg:w-[120px] object-contain md:translate-y-3 lg:mb-8 mt-[-55px]"
+                  className="hidden sm:block w-[100px] sm:w-[120px] md:w-[100px]  lg:w-[120px] object-contain md:translate-y-3 md:mb-0 lg:mb-2 sm:mb-0 md:mt-[-10px] lg:mt-[-55px]"
                 />
-                <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-md text-center md:text-left md:text-sm lg:text-base">
+                <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-md text-center md:text-left md:text-sm lg:text-base mt-1">
                   Crafted essentials for your everyday life. From elegant Men's
                   essentials and distinctive Women's pieces, to comfortable
                   Kids' apparel.
@@ -151,7 +151,7 @@ function Footer() {
                 Facebook
               </a>
               <a
-                href="#"
+                href="https://www.tiktok.com/@nirva55"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-black transition-all duration-300 text-sm lg:text-base flex items-center gap-2 hover:scale-110"
