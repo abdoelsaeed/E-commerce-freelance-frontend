@@ -8,7 +8,6 @@ function formatPrice(v) {
 }
 
 export default function CardCart({ items, onDeleteItem }) {
-  const x = items.map((item) => console.log(item.productId._id));
   return (
     <div className="w-full">
       {/* header: hidden on small screens */}

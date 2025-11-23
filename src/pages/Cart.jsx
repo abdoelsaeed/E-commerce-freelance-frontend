@@ -17,6 +17,7 @@ function Cart() {
   const revalidator = useRevalidator();
   const [isDeleting, setIsDeleting] = useState(false);
   const [isClearing, setIsClearing] = useState(false);
+  const [showConfirmClear, setShowConfirmClear] = useState(false);
 
   if (!cart || cart.cartItems.length === 0) {
     return <EmptyCart />;
@@ -34,7 +35,7 @@ function Cart() {
       if (jwt) {
         // Authenticated user - delete from server
         await removeFromCart(itemId);
-        toast.success('item deleted');
+        toast.success("item deleted");
       } else {
         // Guest user - delete from local storage
         // Pass item data for more reliable matching
@@ -58,11 +59,15 @@ function Cart() {
     }
   }
 
+  // Opens the confirmation modal for clearing the cart
+  function confirmClearAll() {
+    if (isClearing) return;
+    setShowConfirmClear(true);
+  }
+
+  // Performs the actual clear action (no prompt)
   async function handleClearAll() {
     if (isClearing) return;
-    if (!confirm("Are you sure you have deleted all items from the basket?")) {
-      return;
-    }
 
     setIsClearing(true);
     try {
@@ -78,6 +83,7 @@ function Cart() {
 
       // Refresh the cart data
       revalidator.revalidate();
+      toast.success("Cart cleared");
     } catch (error) {
       console.error("Failed to clear cart:", error);
       toast.error("Failed to clear cart");
@@ -93,7 +99,7 @@ function Cart() {
           My Cart
         </h1>
         <button
-          onClick={handleClearAll}
+          onClick={confirmClearAll}
           disabled={isClearing}
           className="mt-10 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
         >
@@ -135,6 +141,45 @@ function Cart() {
           <OrderSummary totalPrice={totalPrice} />
         </div>
       </div>
+
+      {/* Confirmation modal for clearing the cart */}
+      {showConfirmClear && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div
+            className="absolute inset-0 bg-black opacity-40"
+            onClick={() => setShowConfirmClear(false)}
+          />
+
+          <div className="relative bg-white rounded-lg shadow-lg p-6 w-11/12 max-w-md z-10">
+            <h3 className="text-lg font-semibold mb-3">Confirm delete</h3>
+            <p className="text-sm text-gray-700 mb-6">
+              Are you sure you want to delete all items from the basket? This
+              action cannot be undone.
+            </p>
+
+            <div className="flex justify-end gap-3">
+              <button
+                className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+                onClick={() => setShowConfirmClear(false)}
+                disabled={isClearing}
+              >
+                Cancel
+              </button>
+
+              <button
+                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                onClick={() => {
+                  setShowConfirmClear(false);
+                  handleClearAll();
+                }}
+                disabled={isClearing}
+              >
+                {isClearing ? "Deleting..." : "Yes, delete all"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
