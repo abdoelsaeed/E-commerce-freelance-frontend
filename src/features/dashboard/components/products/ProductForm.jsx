@@ -115,13 +115,12 @@ export default function ProductForm() {
       (v) =>
         !v.color ||
         !v.size ||
-        v.quantity < 0 ||
-        !["XS", "S", "M", "L", "XL"].includes(v.size)
+        v.quantity < 0
     );
 
     if (invalidVariant) {
       setError(
-        "Each variant must have a valid size (XS, S, M, L, XL), color, and quantity ≥ 0"
+        "Each variant must have a size, color, and quantity ≥ 0"
       );
       return;
     }
